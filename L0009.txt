@@ -1,0 +1,57 @@
+C++
+Runtime: 4 ms, faster than 97.00% of C++ online submissions for Palindrome Number.
+Memory Usage: 5.9 MB, less than 8.89% of C++ online submissions for Palindrome Number.
+
+class Solution {
+public:
+    bool isPalindrome(int x) 
+    {
+        if (x<0){return false;}
+        if (x<10){return true;}
+        if (x%10==0){return false;}
+        
+        int rev = 0;
+        while (x>rev)
+        {
+        	rev = rev*10 + x%10;
+        	x = x/10;
+        }
+        return (x==rev || x==rev/10);
+    }
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 36 ms, faster than 97.85% of Python online submissions for Palindrome Number.
+Memory Usage: 13.4 MB, less than 9.65% of Python online submissions for Palindrome Number.
+
+class Solution(object):
+    def isPalindrome(self, x):
+        if x<0 : return False
+        if x<10 : return True
+        if x%10==0 : return False
+        rev = 0
+        while x>rev:
+            rev = rev*10 + x%10
+            x = x//10
+        return (x==rev or x==rev//10)
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 224 ms, faster than 99.46% of C# online submissions for Rotate Image.
+Memory Usage: 31.1 MB, less than 44.83% of C# online submissions for Rotate Image.
+public class Solution {
+    public void Rotate(int[][] A)
+    {
+        for (int i = 0; i < A.Length; i++)
+            Array.Reverse(A[i]);
+        int t = 0, L = A.Length - 1;
+        for (int i = 0; i < L; i++)
+        {
+            for (int j = 0; j < L - i; j++)
+            {
+                t = A[i][j];
+                A[i][j] = A[L - j][L - i];
+                A[L - j][L - i] = t;
+            }
+        }
+    }
+}
