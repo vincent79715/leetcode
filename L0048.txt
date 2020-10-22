@@ -1,0 +1,50 @@
+C++
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Rotate Image.
+Memory Usage: 7.5 MB, less than 17.68% of C++ online submissions for Rotate Image.
+
+class Solution {
+public:
+    void rotate(vector<vector<int>>& A) 
+    {
+        int L = A.size()-1,L2=L/2;
+        for (int i = 0; i <= L; i++)
+            for (int j = 0; j <= L2 ; j++)            
+                swap(A[i][j],A[i][L - j]);
+        for (int i = 0; i < L; i++)
+            for (int j = 0; j < L - i; j++)
+                swap(A[i][j],A[L - j][L - i]);
+
+    }
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 12 ms, faster than 99.77% of Python online submissions for Rotate Image.
+Memory Usage: 13.4 MB, less than 12.09% of Python online submissions for Rotate Image.
+
+class Solution(object):
+    def rotate(self, A):
+        A.reverse()
+        for i in range(len(A)):
+            for j in range(i):
+                A[i][j], A[j][i] = A[j][i], A[i][j]
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 224 ms, faster than 99.46% of C# online submissions for Rotate Image.
+Memory Usage: 31.1 MB, less than 44.83% of C# online submissions for Rotate Image.
+public class Solution {
+    public void Rotate(int[][] A)
+    {
+        for (int i = 0; i < A.Length; i++)
+            Array.Reverse(A[i]);
+        int t = 0, L = A.Length - 1;
+        for (int i = 0; i < L; i++)
+        {
+            for (int j = 0; j < L - i; j++)
+            {
+                t = A[i][j];
+                A[i][j] = A[L - j][L - i];
+                A[L - j][L - i] = t;
+            }
+        }
+    }
+}
