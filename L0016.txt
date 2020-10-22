@@ -1,0 +1,73 @@
+C++
+Runtime: 8 ms, faster than 98.98% of C++ online submissions for 3Sum Closest.
+Memory Usage: 10 MB, less than 100.00% of C++ online submissions for 3Sum Closest.
+
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) 
+    {
+        int Ans = nums[0]+nums[1]+nums[2];
+        sort(nums.begin(), nums.end());
+        int L = nums.size()-1,j=0, k=0,s=0;
+        for(int i=0;i<L-1;i++)
+        {
+            j = i+1;
+            k = L;
+            while (j < k)
+            {
+                s = nums[i] + nums[j] + nums[k];
+                if (s == target){return target;}
+                else if (target > s) {j++;}
+                else {k--;}
+                if (abs(target-s)<abs(target-Ans)){Ans = s;}
+            }
+        }
+        return Ans;
+    }
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 88 ms, faster than 83.92% of Python online submissions for 3Sum Closest.
+Memory Usage: 13.6 MB, less than 11.95% of Python online submissions for 3Sum Closest.
+
+class Solution(object):
+    def threeSumClosest(self, nums, target):
+        Ans = nums[0]+nums[1]+nums[2]
+        nums.sort()
+        L = len(nums) - 1
+        for i in range(L-1):
+            j, k = i+1, L
+            while j < k:
+                s = nums[i] + nums[j] + nums[k]
+                if s == target: return target
+                if abs(target-s)<abs(target-Ans): Ans = s
+                if target>s: j+=1
+                else: k-=1
+        return Ans
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 88 ms, faster than 99.38% of C# online submissions for 3Sum Closest.
+Memory Usage: 25.4 MB, less than 28.31% of C# online submissions for 3Sum Closest.
+
+public class Solution {
+    public int ThreeSumClosest(int[] nums, int target) 
+    {
+        int Ans = nums[0]+nums[1]+nums[2];
+        Array.Sort(nums);
+        int L = nums.Length-1,j=0, k=0,s=0;
+        for(int i=0;i<L-1;i++)
+        {
+            j = i+1;
+            k = L;
+            while (j < k)
+            {
+                s = nums[i] + nums[j] + nums[k];
+                if (s == target){return target;}
+                else if (target > s) {j++;}
+                else{k--;}
+                if (Math.Abs(target-s)<Math.Abs(target-Ans)){Ans = s;}
+            }
+        }
+        return Ans;
+    }
+}

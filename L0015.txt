@@ -1,0 +1,106 @@
+C++
+Runtime: 76 ms, faster than 88.69% of C++ online submissions for 3Sum.
+Memory Usage: 20.5 MB, less than 5.17% of C++ online submissions for 3Sum.
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) 
+    {
+        vector<vector<int> > Ans;
+        vector<int> t(3);
+        sort(nums.begin(), nums.end());
+        int L = nums.size()-1,j=0, k=0,s=0;
+        for(int i=0;i<L-1;i++)
+        {
+            if (nums[i]>0){continue;}
+            if (i > 0 and nums[i] == nums[i-1]) {continue;}  
+            j = i+1;
+            k = L;
+            while (j < k)
+            {
+                s = nums[i] + nums[j];
+                if (s>0 and nums[j+1]>0) {break;}
+                s += nums[k];
+                if (s < 0) {j++;}
+                else if(s > 0) {k--;}
+                else
+                {
+                    t[0] = nums[i];
+                    t[1] = nums[j];
+                    t[2] = nums[k];
+                    Ans.push_back(t);
+                    while (j < k and nums[j] == nums[j+1]) {j++;}
+                    while (j < k and nums[k] == nums[k-1]){ k--;}
+                    j++; 
+                    k--;
+                }
+            }
+        }
+        return Ans;
+    }
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 652 ms, faster than 75.13% of Python online submissions for 3Sum.
+Memory Usage: 16.4 MB, less than 8.35% of Python online submissions for 3Sum.
+
+class Solution(object):
+    def threeSum(self,nums):
+        Ans = []
+        nums.sort()
+        L = len(nums) - 1
+        for i in range(L-1):
+            if nums[i]>0: continue
+            if i > 0 and nums[i] == nums[i-1]: continue  
+            j, k = i+1, L
+            while j < k:
+                s = nums[i] + nums[j]
+                if s>0 and nums[j+1]>0: break
+                s += nums[k]
+                if s < 0: j +=1 
+                elif s > 0: k -= 1
+                else:
+                    Ans.append([nums[i], nums[j], nums[k]])
+                    while j < k and nums[j] == nums[j+1]: j += 1
+                    while j < k and nums[k] == nums[k-1]: k -= 1
+                    j += 1; k -= 1
+        return Ans
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 284 ms, faster than 96.38% of C# online submissions for 3Sum.
+Memory Usage: 36.4 MB, less than 7.03% of C# online submissions for 3Sum.
+
+public class Solution {
+    public IList<IList<int>> ThreeSum(int[] nums) 
+    {
+        IList<IList<int>> Ans = new List<IList<int>>();
+        IList<int> t = new List<int>(new int[3]);
+        Array.Sort(nums);
+        int L = nums.Length-1,j=0, k=0,s=0;
+        for(int i=0;i<L-1;i++)
+        {
+            if (nums[i]>0){continue;}
+            if (i > 0 && nums[i] == nums[i-1]) {continue;}  
+            j = i+1;
+            k = L;
+            while (j < k)
+            {
+                
+                s = nums[i] + nums[j];
+                if (s>0 && nums[j+1]>0) {break;}
+                s += nums[k];
+                if (s < 0) {j++;}
+                else if(s > 0) {k--;}
+                else
+                {
+                    Ans.Add(new List<int>(new int[3] { nums[i],nums[j],nums[k]}));
+                    while (j < k && nums[j] == nums[j+1]) { j++;}
+                    while (j < k && nums[k] == nums[k-1]) { k--;}
+                    j++; 
+                    k--;
+                }
+            }
+        }
+        return Ans;
+    }
+}
