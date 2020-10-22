@@ -1,0 +1,59 @@
+C++
+Runtime: 16 ms, faster than 74.21% of C++ online submissions for Two Sum.
+Memory Usage: 10.3 MB, less than 12.20% of C++ online submissions for Two Sum.
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        map<int,int> A;
+        int L = nums.size();
+        vector<int> Ans(2);
+        for(int i=0;i<L;i++)
+        {
+            int n = target - nums[i];
+            if(A.find(n)!=A.end())
+            {
+                Ans[0] = A[n];
+                Ans[1] = i;
+                return Ans;
+            }
+            A[nums[i]] = i;
+        }
+        return Ans;
+    }
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 28 ms, faster than 97.91% of Python online submissions for Two Sum.
+Memory Usage: 14.4 MB, less than 36.76% of Python online submissions for Two Sum.
+
+class Solution:
+    def twoSum(self, nums, target):
+        A = {}
+        for i, num in enumerate(nums):
+            n = target - num
+            if n in A: return [A[n],i]
+            A[num] = i
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 236 ms, faster than 94.78% of C# online submissions for Two Sum.
+Memory Usage: 31.8 MB, less than 27.88% of C# online submissions for Two Sum.
+
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) 
+    {
+            Dictionary<int, int> A = new Dictionary<int, int>();
+            int W = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int n = target - nums[i];
+                if (A.TryGetValue(n, out W))
+                {
+                    return new int[] { A[n], i };
+                }
+                A[nums[i]] = i;
+            }
+            return new int[] { };
+    }
+}
