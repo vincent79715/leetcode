@@ -1,0 +1,75 @@
+C++
+Runtime: 32 ms, faster than 85.24% of C++ online submissions for Add Two Numbers.
+Memory Usage: 71.6 MB, less than 13.95% of C++ online submissions for Add Two Numbers.
+
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) 
+    {
+        int sum=0;
+        ListNode *l3=new ListNode(0);
+        ListNode *l3_t = l3;
+        while(l1 || l2 || sum)
+        {
+            if(l1){sum+=l1->val;l1= l1->next;}
+            if(l2){sum+=l2->val;l2= l2->next;}
+            
+            l3_t->next = new ListNode(sum%10);
+            l3_t = l3_t->next;
+            sum/=10;
+
+        }        
+        return l3->next;
+    }
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 64 ms, faster than 54.59% of Python online submissions for Add Two Numbers.
+Memory Usage: 13.7 MB, less than 23.79% of Python online submissions for Add Two Numbers.
+
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        l3 = ListNode(0)
+        l3_t = l3
+        v = 0
+        while l1 or l2 or v:
+            if l1:
+                v += l1.val
+                l1 = l1.next
+            if l2:
+                v += l2.val
+                l2 = l2.next
+
+            l3_t.next = ListNode(v%10)
+            l3_t = l3_t.next
+            v = v/10
+        return l3.next
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 104 ms, faster than 84.55% of C# online submissions for Add Two Numbers.
+Memory Usage: 28.3 MB, less than 6.21% of C# online submissions for Add Two Numbers.
+
+public class Solution {
+    public ListNode AddTwoNumbers(ListNode l1, ListNode l2) 
+    {
+        int sum=0;
+        ListNode l3=new ListNode(0);
+        ListNode l3_t = l3;
+        while(l1!=null || l2!=null || sum>0)
+        {
+            if(l1!=null){sum+=l1.val;l1= l1.next;}
+            if(l2!=null){sum+=l2.val;l2= l2.next;}
+            
+            l3_t.next = new ListNode(sum%10);
+            l3_t = l3_t.next;
+            sum/=10;
+
+        }        
+        return l3.next;
+    }
+}
