@@ -1,0 +1,42 @@
+C++
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Pow(x, n).
+Memory Usage: 6.2 MB, less than 100.00% of C++ online submissions for Pow(x, n).
+
+class Solution {
+public:
+    double myPow(double x, long n) 
+    {
+        if(x==1 || n==0){return 1;}
+        if(n<0){x=1/x;n=-n;}
+        if(n==1){return x;}
+        return (n%2==0 ? 1:x) * myPow(x*x,n/2);
+
+    }
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 16 ms, faster than 83.37% of Python online submissions for Pow(x, n).
+Memory Usage: 13.3 MB, less than 12.06% of Python online submissions for Pow(x, n).
+
+class Solution(object):
+    def myPow(self, x, n):
+        if(x==1 or n==0):return 1
+        if(n==1):return x;
+        if(n<0):
+            x=1/x
+            n=-n
+        return self.myPow(x*x, n//2) if n % 2 == 0 else x*self.myPow(x*x, n//2)
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 48 ms, faster than 58.62% of C# online submissions for Pow(x, n).
+Memory Usage: 15.8 MB, less than 43.08% of C# online submissions for Pow(x, n).
+
+public class Solution {
+    public double MyPow(double x, long n) 
+    {
+        if(x==1 || n==0){return 1;}
+        if(n<0){x=1/x;n=-n;}
+        if(n==1){return x;}
+        return (n%2==0 ? 1:x) * MyPow(x*x,n/2);
+    }
+}
