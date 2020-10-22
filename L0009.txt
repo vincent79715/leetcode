@@ -36,22 +36,22 @@ class Solution(object):
         return (x==rev or x==rev//10)
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 C#
-Runtime: 224 ms, faster than 99.46% of C# online submissions for Rotate Image.
-Memory Usage: 31.1 MB, less than 44.83% of C# online submissions for Rotate Image.
+Runtime: 60 ms, faster than 85.67% of C# online submissions for Palindrome Number.
+Memory Usage: 16.7 MB, less than 5.16% of C# online submissions for Palindrome Number.
+
 public class Solution {
-    public void Rotate(int[][] A)
+    public bool IsPalindrome(int x) 
     {
-        for (int i = 0; i < A.Length; i++)
-            Array.Reverse(A[i]);
-        int t = 0, L = A.Length - 1;
-        for (int i = 0; i < L; i++)
+        if (x<0){return false;}
+        if (x<10){return true;}
+        if (x%10==0){return false;}
+        
+        int rev = 0;
+        while (x>rev)
         {
-            for (int j = 0; j < L - i; j++)
-            {
-                t = A[i][j];
-                A[i][j] = A[L - j][L - i];
-                A[L - j][L - i] = t;
-            }
+        	rev = rev*10 + x%10;
+        	x = x/10;
         }
+        return (x==rev || x==rev/10);
     }
 }
