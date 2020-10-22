@@ -1,0 +1,81 @@
+C++
+Runtime: 16 ms, faster than 79.47% of C++ online submissions for Longest Substring Without Repeating Characters.
+Memory Usage: 21 MB, less than 5.02% of C++ online submissions for Longest Substring Without Repeating Characters.
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) 
+    {
+        string tS = "";
+        int maxL = 0,tL = 0;
+        for(int i=0;i<s.length();i++)
+        {
+            char c = s[i];
+            if(tS.find(c)!= std::string::npos)
+            {
+                tS = tS.substr(tS.find(c)+1);
+                tS += c;
+                tL = tS.length();
+            }
+            else
+            {
+                tS += c;
+                tL += 1;
+                if(tL > maxL) 
+                    maxL = tL;
+            }
+        }
+        return maxL;
+    }
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 40 ms, faster than 88.14% of Python online submissions for Longest Substring Without Repeating Characters.
+Memory Usage: 13.7 MB, less than 9.72% of Python online submissions for Longest Substring Without Repeating Characters.
+
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        tS = ''
+        maxL = 0
+        tL = 0
+        for c in s:
+            if c in tS:
+                tS = tS.split(c)[1]
+                tS += c
+                tL = len(tS)
+            else:
+                tS += c
+                tL += 1
+                if tL > maxL: maxL = tL
+        return maxL
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 92 ms, faster than 54.78% of C# online submissions for Longest Substring Without Repeating Characters.
+Memory Usage: 26.7 MB, less than 15.27% of C# online submissions for Longest Substring Without Repeating Characters.
+
+public class Solution
+{
+    public int LengthOfLongestSubstring(string s)
+    {
+        string tS = "";
+        int maxL = 0, tL = 0;
+        for (int i = 0; i < s.Length; i++)
+        {
+            char c = s[i];
+            if (tS.IndexOf(c) != -1)
+            {
+                tS = tS.Substring(tS.IndexOf(c) + 1);
+                tS += c;
+                tL = tS.Length;
+            }
+            else
+            {
+                tS += c;
+                tL += 1;
+                if (tL > maxL)
+                    maxL = tL;
+            }
+        }
+        return maxL;
+    }
+}
