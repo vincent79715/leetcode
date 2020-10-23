@@ -1,0 +1,89 @@
+C++
+Runtime: 4 ms, faster than 93.88% of C++ online submissions for Search in Rotated Sorted Array.
+Memory Usage: 11.6 MB, less than 5.19% of C++ online submissions for Search in Rotated Sorted Array.
+
+class Solution {
+public:
+    int search(vector<int>& nums, int target) 
+    {
+        int M=0,S1=0,S2=nums.size()-1;
+        if (S2<0) return -1;
+        while(S1 < S2-1)
+        {
+            M = (S1+S2)/2;
+            if (nums[S1]==target) return S1;
+            if (nums[S2]==target) return S2;
+            if (nums[M]==target) return M;
+            if(nums[S1] < nums[M] && nums[S1] < target && target < nums[M])     {S1 ++;  S2 = M-1;}
+            else if(nums[M] < nums[S2] && nums[M] < target && target < nums[S2]){S1 = M+1; S2 --;}
+            else if(nums[S1] > nums[M]) {S1 ++;  S2 = M-1;}
+            else if(nums[M] > nums[S2]) {S1 = M+1; S2 --;}
+            else {S1++;S2--;}
+        }
+        if (nums[S1]==target) return S1;
+        if (nums[S2]==target) return S2;
+        if (nums[M]==target)  return M;
+        return -1;
+    }
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 20 ms, faster than 97.98% of Python online submissions for Search in Rotated Sorted Array.
+Memory Usage: 13.7 MB, less than 40.78% of Python online submissions for Search in Rotated Sorted Array.
+
+class Solution(object):
+    def search(self, nums, target):
+        M,S1,S2 = 0,0,len(nums) - 1 
+        if S2<0: return -1
+        while(S1 < S2-1):
+            M = (S1+S2)//2
+            if nums[S1]==target:return S1
+            if nums[S2]==target:return S2
+            if nums[M]==target:return M
+            if(nums[S1] < nums[M] and nums[S1] < target and target < nums[M]):
+                S1 += 1
+                S2 = M-1
+            elif(nums[M] < nums[S2] and nums[M] < target and target < nums[S2]):
+                S1 = M+1
+                S2 -= 1
+            elif(nums[S1] > nums[M]):
+                S1 += 1
+                S2 = M-1
+            elif(nums[M] > nums[S2]):
+                S1 = M+1
+                S2 -= 1
+            else:
+                S1 += 1
+                S2 -= 1
+        if nums[S1]==target:return S1
+        if nums[S2]==target:return S2
+        if nums[M]==target:return M
+        return -1
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 88 ms, faster than 93.58% of C# online submissions for Search in Rotated Sorted Array.
+Memory Usage: 25.3 MB, less than 10.04% of C# online submissions for Search in Rotated Sorted Array.
+
+public class Solution {
+    public int Search(int[] nums, int target) 
+    {
+        int M=0,S1=0,S2=nums.Length-1;
+        if (S2<0) return -1;
+        while(S1 < S2-1)
+        {
+            M = (S1+S2)/2;
+            if (nums[S1]==target) return S1;
+            if (nums[S2]==target) return S2;
+            if (nums[M]==target) return M;
+            if(nums[S1] < nums[M] && nums[S1] < target && target < nums[M])     {S1 ++;  S2 = M-1;}
+            else if(nums[M] < nums[S2] && nums[M] < target && target < nums[S2]){S1 = M+1; S2 --;}
+            else if(nums[S1] > nums[M]) {S1 ++;  S2 = M-1;}
+            else if(nums[M] > nums[S2]) {S1 = M+1; S2 --;}
+            else {S1++;S2--;}
+        }
+        if (nums[S1]==target) return S1;
+        if (nums[S2]==target) return S2;
+        if (nums[M]==target)  return M;
+        return -1;
+    }
+}
