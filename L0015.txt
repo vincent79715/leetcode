@@ -1,6 +1,6 @@
 C++
-Runtime: 76 ms, faster than 88.69% of C++ online submissions for 3Sum.
-Memory Usage: 20.5 MB, less than 5.17% of C++ online submissions for 3Sum.
+Runtime: 72 ms, faster than 92.99% of C++ online submissions for 3Sum.
+Memory Usage: 20.4 MB, less than 5.16% of C++ online submissions for 3Sum.
 
 class Solution {
 public:
