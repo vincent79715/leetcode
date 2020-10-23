@@ -1,0 +1,36 @@
+C++
+Runtime: 8 ms, faster than 81.50% of C++ online submissions for Integer to Roman.
+Memory Usage: 6.2 MB, less than 11.01% of C++ online submissions for Integer to Roman.
+
+class Solution {
+public:
+    string M[4] = { "", "M", "MM", "MMM" };
+    string C[10] = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+    string X[10] = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+    string I[10] = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+    string intToRoman(int num){return M[num / 1000] + C[(num % 1000) / 100] + X[(num % 100) / 10] + I[num % 10];}
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 32 ms, faster than 88.56% of Python online submissions for Integer to Roman.
+Memory Usage: 13.2 MB, less than 11.20% of Python online submissions for Integer to Roman.
+class Solution(object):
+    def __init__(self):
+        self.M = [ "", "M", "MM", "MMM" ]
+        self.C = [ "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" ]
+        self.X = [ "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" ]
+        self.I = [ "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" ]
+    def intToRoman(self, num):
+        return self.M[num / 1000] + self.C[(num % 1000) / 100] + self.X[(num % 100) / 10] + self.I[num % 10]
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 76 ms, faster than 99.75% of C# online submissions for Integer to Roman.
+Memory Usage: 27 MB, less than 51.69% of C# online submissions for Integer to Roman.
+
+public class Solution {
+    string[] M = new string[] { "", "M", "MM", "MMM" };
+    string[] C = new string[] { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+    string[] X = new string[] { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+    string[] I = new string[] { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+    public string IntToRoman(int num) {return M[num / 1000] + C[(num % 1000) / 100] + X[(num % 100) / 10] + I[num % 10]; }
+}
