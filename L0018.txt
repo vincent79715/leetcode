@@ -1,0 +1,113 @@
+C++
+Runtime: 12 ms, faster than 97.72% of C++ online submissions for 4Sum.
+Memory Usage: 13.3 MB, less than 5.29% of C++ online submissions for 4Sum.
+
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) 
+    {
+        vector<vector<int>> Ans;
+        sort(nums.begin(), nums.end());
+        int L = nums.size()-1,j=0, k=0,s=0;
+        for(int m=0;m<L-2;m++)
+        {
+            if(m>0&&nums[m]==nums[m-1]) continue;
+            if(nums[m]+nums[m+1]+nums[m+2]+nums[m+3]>target) break;
+            if(nums[m]+nums[L-2]+nums[L-1]+nums[L]<target) continue;
+            for(int i=m+1;i<L-1;i++)
+            {
+                if (i > m+1 && nums[i] == nums[i-1]) {continue;}  
+                if(nums[m]+nums[i]+nums[i+1]+nums[i+2]>target) break;
+                if(nums[m]+nums[i]+nums[L-1]+nums[L]<target) continue;
+                j = i+1;
+                k = L;
+                while (j < k)
+                {
+                    s = nums[i] + nums[j] + nums[k] + nums[m];
+                    if (s < target) {j++;}
+                    else if(s > target) {k--;}
+                    else
+                    {
+                        Ans.push_back(vector<int>{nums[m],nums[i],nums[j],nums[k]});
+                        while (j < k and nums[j] == nums[j+1]) {j++;}
+                        while (j < k and nums[k] == nums[k-1]){ k--;}
+                        j++; 
+                        k--;
+                    }
+                }
+            }
+        }
+        return Ans;
+    }
+};
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+Python
+Runtime: 64 ms, faster than 96.09% of Python online submissions for 4Sum.
+Memory Usage: 13.3 MB, less than 7.81% of Python online submissions for 4Sum.
+
+class Solution(object):
+    def fourSum(self, nums, target):
+        Ans = []
+        nums.sort()
+        L = len(nums) - 1
+        for m in range(L-2):
+            if(m>0 and nums[m]==nums[m-1]):continue
+            if(nums[m]+nums[m+1]+nums[m+2]+nums[m+3]>target):break
+            if(nums[m]+nums[L-2]+nums[L-1]+nums[L]<target):continue
+            for i in range(m+1,L-1):
+                if (i > m+1 and nums[i] == nums[i-1]):continue  
+                if(nums[m]+nums[i]+nums[i+1]+nums[i+2]>target):break
+                if(nums[m]+nums[i]+nums[L-1]+nums[L]<target):continue
+                j, k = i+1, L
+                while j < k:
+					s = nums[i] + nums[j] + nums[k] + nums[m]
+					if s < target: j +=1 
+					elif s > target: k -= 1
+					else:
+						Ans.append([nums[m], nums[i], nums[j], nums[k]])
+						while j < k and nums[j] == nums[j+1]: j += 1
+						while j < k and nums[k] == nums[k-1]: k -= 1
+						j += 1; k -= 1
+        return Ans
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+C#
+Runtime: 248 ms, faster than 95.17% of C# online submissions for 4Sum.
+Memory Usage: 32.4 MB, less than 7.06% of C# online submissions for 4Sum.
+
+public class Solution {
+    public IList<IList<int>> FourSum(int[] nums, int target) 
+    {
+        IList<IList<int>> Ans = new List<IList<int>>();
+        Array.Sort(nums);
+        int L = nums.Length-1,j=0, k=0,s=0;
+        for(int m=0;m<L-2;m++)
+        {
+            if(m>0&&nums[m]==nums[m-1]) continue;
+            if(nums[m]+nums[m+1]+nums[m+2]+nums[m+3]>target) break;
+            if(nums[m]+nums[L-2]+nums[L-1]+nums[L]<target) continue;
+            for(int i=m+1;i<L-1;i++)
+            {
+                if (i > m+1 && nums[i] == nums[i-1]) {continue;}  
+                if(nums[m]+nums[i]+nums[i+1]+nums[i+2]>target) break;
+                if(nums[m]+nums[i]+nums[L-1]+nums[L]<target) continue;
+                j = i+1;
+                k = L;
+                while (j < k)
+                {
+                    s = nums[i] + nums[j] + nums[k] + nums[m];
+                    if (s < target) {j++;}
+                    else if(s > target) {k--;}
+                    else
+                    {
+                        Ans.Add(new List<int>(new int[] { nums[m],nums[i],nums[j],nums[k]}));
+                        while (j < k && nums[j] == nums[j+1]) { j++;}
+                        while (j < k && nums[k] == nums[k-1]) { k--;}
+                        j++; 
+                        k--;
+                    }
+                }
+            }
+        }
+        return Ans;
+    }
+}
